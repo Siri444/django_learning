@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from myapp.form import inputform
 # Create your views here.
 def home(request):
     return HttpResponse("Hello welcome to the restraunt")
@@ -12,7 +13,7 @@ def details(request):
     user_agent = request.META['HTTP_USER_AGENT']
     path_info=request.path_info 
     
-    msg=f"""<br>
+    msg=f"""
         <br>path:{path} 
         <br>scheme:{scheme}
         <br>method:{method}
@@ -34,3 +35,13 @@ def qryview(request):
     id=request.GET['id']
     return HttpResponse("Name:{} userid:{}".format(name,id))
         
+def formview(request):
+    form=inputform()
+    context={"form":form}
+    return render(request,"home.html",context)
+
+#templates
+
+def menu(request):
+    menuitem = {'name':"Greel_salad"}
+    return render(request,'menu.html',menuitem)
