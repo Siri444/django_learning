@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{%load static%}
+{%block content%}
+<br></br>
+<div class="position-reletive">
+<div class="position-absolute top-50 start-50 translate-middle">
+<h1>Menu</h1>
+<div class=column>
+    {%for item in menu.menu%}
+    <ul>
+        <li>{{item.name}}</li>
+        <li>{{item.price}}Rs</li>
+        <li>{{item.description}}</li>
+    </ul>
+    {% endfor %}
+</div>
+</div>
+</div>
+{%endblock%}
